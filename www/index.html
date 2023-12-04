@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle Drawing with Rust and Wasm</title>
+    <!-- <script src="./bootstrap.js"></script> -->
+    <script type="module">
+        import init, { Chart } from '../pkg/museum_visualization_web.js';
+
+        async function run() {
+            await init(); // Initializes the Wasm module.
+
+            const canvas = document.getElementById('canvas');
+
+            Chart.draw_rectangle(canvas).catch(console.error);
+        }
+
+        run();
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+</html>
