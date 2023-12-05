@@ -25,14 +25,12 @@ pub struct Point {
 
 #[wasm_bindgen]
 impl Chart {
-
     /// Draw a rectangle on the provided canvas element.
     pub fn draw_rectangle(canvas: HtmlCanvasElement) -> Result<Chart, JsValue> {
-        let map_coord = rect::draw(canvas)
-            .map_err(|err| err.to_string())?;
-        Ok(Chart { 
-                convert: Box::new(map_coord)
-            })
+        let map_coord = rect::draw(canvas).map_err(|err| err.to_string())?;
+        Ok(Chart {
+            convert: Box::new(map_coord),
+        })
     }
 
     /// This function can be used to convert screen coordinates to

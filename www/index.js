@@ -4,9 +4,7 @@ class Chart {}
 
 const canvas = document.getElementById("canvas");
 const coord = document.getElementById("coord");
-const plotType = document.getElementById("plot-type");
 const status = document.getElementById("status");
-
 
 let chart = null;
 
@@ -29,7 +27,6 @@ function setupUI() {
 
 /** Setup canvas to properly handle high DPI and redraw current plot. */
 function setupCanvas() {
-	const dpr = window.devicePixelRatio || 1.0;
     const aspectRatio = canvas.width / canvas.height;
     const size = canvas.parentNode.offsetWidth * 0.8;
     canvas.style.width = size + "px";
