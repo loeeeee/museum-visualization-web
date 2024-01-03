@@ -4,7 +4,11 @@ use plotters_canvas::CanvasBackend;
 use web_sys::HtmlCanvasElement;
 
 /// Draw a rectangle on the canvas.
-pub fn draw(canvas: HtmlCanvasElement) -> DrawResult<impl Fn((i32, i32)) -> Option<(f64, f64)>> {
+pub fn draw(
+    canvas: HtmlCanvasElement,
+    top_left_x: f64, 
+    top_left_y: f64
+) -> DrawResult<impl Fn((i32, i32)) -> Option<(f64, f64)>> {
     let root = CanvasBackend::with_canvas_object(canvas)
         .unwrap()
         .into_drawing_area();
@@ -21,7 +25,7 @@ pub fn draw(canvas: HtmlCanvasElement) -> DrawResult<impl Fn((i32, i32)) -> Opti
 
     // Drawing a rectangle
     chart.draw_series(std::iter::once(Rectangle::new(
-        [(10f64, 10f64), (60f64, 60f64)],
+        [(top_left_x, top_left_y), (top_left_x + 50f64, top_left_y + 50f64)], // Example size 50x50
         RED.filled(),
     )))?;
 

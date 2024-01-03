@@ -14,6 +14,8 @@ pub type DrawResult<T> = Result<T, Box<dyn std::error::Error>>;
 #[wasm_bindgen]
 pub struct Chart {
     convert: Box<dyn Fn((i32, i32)) -> Option<(f64, f64)>>,
+    rect_x: f64,
+    rect_y: f64,
 }
 
 /// Result of screen to chart coordinates conversion.
@@ -26,10 +28,12 @@ pub struct Point {
 #[wasm_bindgen]
 impl Chart {
     /// Draw a rectangle on the provided canvas element.
-    pub fn draw_rectangle(canvas: HtmlCanvasElement) -> Result<Chart, JsValue> {
-        let map_coord = rect::draw(canvas).map_err(|err| err.to_string())?;
+    pub fn draw_rectangle(canvas: HtmlCanvasElement, rect_x: f64, rect_y: f64) -> Result<Chart, JsValue> {
+        let map_coord = rect::draw(canvas,rect_x,rect_y).map_err(|err| err.to_string())?;
         Ok(Chart {
             convert: Box::new(map_coord),
+            rect_x: rect_x,
+            rect_y: rect_y
         })
     }
 
