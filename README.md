@@ -26,3 +26,10 @@ Run the /www
 python3 -m http.server
 
 ```
+
+or
+
+```bash
+cargo install basic-http-server
+basic-http-server
+```
