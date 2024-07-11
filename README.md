@@ -1,3 +1,5 @@
+new web proj visit: https://github.com/Mininda/chinese-relics-museums-new/tree/web
+
 # Install
 
 Install Cargo, and Rust
